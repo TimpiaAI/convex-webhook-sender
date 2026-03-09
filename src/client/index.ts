@@ -184,6 +184,18 @@ export class WebhookSender {
   }
 
   /**
+   * Get the Ed25519 public key for a destination (for recipient verification).
+   */
+  async getPublicKey(
+    ctx: RunQueryCtx,
+    destinationId: string
+  ): Promise<string | null> {
+    return await ctx.runQuery(this.component.public.getPublicKey, {
+      destinationId,
+    });
+  }
+
+  /**
    * Get the status of a specific webhook delivery.
    */
   async getWebhookStatus(

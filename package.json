@@ -1,6 +1,6 @@
 {
   "name": "convex-webhook-sender",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Managed webhook delivery system for Convex — queue outbound webhooks with retries, exponential backoff, HMAC signing, and delivery tracking",
   "type": "module",
   "license": "MIT",

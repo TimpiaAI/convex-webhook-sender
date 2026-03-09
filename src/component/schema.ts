@@ -12,6 +12,10 @@ export default defineSchema({
     active: v.boolean(),
     metadata: v.optional(v.any()),
     createdAt: v.number(),
+    // Ed25519 key pair for asymmetric signing
+    privateKey: v.optional(v.string()), // base64-encoded PKCS8
+    publicKey: v.optional(v.string()), // base64-encoded SPKI
+    urlValidated: v.optional(v.boolean()),
   }).index("by_url", ["url"]),
 
   webhooks: defineTable({

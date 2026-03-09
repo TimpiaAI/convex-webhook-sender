@@ -17,7 +17,8 @@ function generateSecret(): string {
 
 /**
  * Register a new webhook destination URL.
- * Generates an HMAC signing secret for payload verification.
+ * Generates an HMAC signing secret and schedules Ed25519 key pair generation.
+ * Also validates destination URL reachability via HEAD request.
  */
 export const registerDestination = mutation({
   args: {
@@ -48,7 +49,20 @@ export const registerDestination = mutation({
       createdAt: Date.now(),
     });
 
-    return { destinationId: id as string, secret };
+    const destinationId = id as string;
+
+    // Schedule Ed25519 key pair generation (async)
+    await ctx.scheduler.runAfter(0, internal.delivery.generateKeyPair, {
+      destinationId,
+    });
+
+    // Schedule URL validation via HEAD request (async)
+    await ctx.scheduler.runAfter(0, internal.delivery.validateUrl, {
+      destinationId,
+      url: args.url,
+    });
+
+    return { destinationId, secret };
   },
 });
 
@@ -260,6 +274,23 @@ export const getSigningSecret = query({
     try {
       const dest = await ctx.db.get(args.destinationId as any);
       return dest?.secret ?? null;
+    } catch {
+      return null;
+    }
+  },
+});
+
+/**
+ * Get the Ed25519 public key for a destination.
+ * Share this with the recipient so they can verify webhook signatures.
+ */
+export const getPublicKey = query({
+  args: { destinationId: v.string() },
+  returns: v.union(v.string(), v.null()),
+  handler: async (ctx, args) => {
+    try {
+      const dest = await ctx.db.get(args.destinationId as any);
+      return dest?.publicKey ?? null;
     } catch {
       return null;
     }

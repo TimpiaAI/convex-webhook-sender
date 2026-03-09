@@ -10,6 +10,7 @@ export const api: {
     getDestination: any;
     listDestinations: any;
     getSigningSecret: any;
+    getPublicKey: any;
     getWebhookStatus: any;
     getDeliveryHistory: any;
     getFailedWebhooks: any;
@@ -21,5 +22,10 @@ export const internal: {
     deliver: any;
     getDeliveryData: any;
     recordResult: any;
+    generateKeyPair: any;
+    storeKeyPair: any;
+    validateUrl: any;
+    markUrlValidated: any;
+    checkRateLimit: any;
   };
 } = null as any;
