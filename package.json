@@ -1,0 +1,28 @@
+{
+  "name": "convex-webhook-sender",
+  "version": "1.0.0",
+  "description": "Managed webhook delivery system for Convex — queue outbound webhooks with retries, exponential backoff, HMAC signing, and delivery tracking",
+  "type": "module",
+  "license": "MIT",
+  "files": ["dist", "src"],
+  "module": "./dist/client/index.js",
+  "types": "./dist/client/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": { "types": "./dist/client/index.d.ts", "default": "./dist/client/index.js" },
+    "./convex.config": { "types": "./dist/component/convex.config.d.ts", "default": "./dist/component/convex.config.js" },
+    "./convex.config.js": { "types": "./dist/component/convex.config.d.ts", "default": "./dist/component/convex.config.js" },
+    "./_generated/component.js": { "types": "./dist/component/_generated/component.d.ts" }
+  },
+  "scripts": {
+    "build": "npm run build:esm && npm run build:component",
+    "build:esm": "tsc -p tsconfig.build.json",
+    "build:component": "tsc -p tsconfig.component.json"
+  },
+  "peerDependencies": { "convex": "^1.24.0" },
+  "devDependencies": { "convex": "^1.32.0", "typescript": "^5.9.3" },
+  "keywords": ["convex","component","webhook","sender","delivery","retry","backoff","signing","hmac"],
+  "repository": { "type": "git", "url": "https://github.com/TimpiaAI/convex-webhook-sender.git" },
+  "homepage": "https://github.com/TimpiaAI/convex-webhook-sender#readme",
+  "author": "TimpiaAI"
+}
