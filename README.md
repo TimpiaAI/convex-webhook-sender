@@ -1,6 +1,20 @@
+<div align="center">
+
 # convex-webhook-sender
 
 [![Convex Component](https://www.convex.dev/components/badge/convex-webhook-sender)](https://www.convex.dev/components/convex-webhook-sender)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=flat&logo=typescript&logoColor=white)
+
+<strong>Managed webhook delivery for Convex</strong>
+
+HMAC signing • Automatic retries • Exponential backoff • Delivery tracking
+
+[View Demo](#-live-demo) • [Documentation](#-setup) • [API Reference](#-api-reference)
+
+</div>
+
+---
 
 A Convex component for managed outbound webhook delivery with HMAC signing, retries, exponential backoff, and delivery tracking.
 
@@ -140,6 +154,18 @@ webhook-signature: v1,<base64_hmac_sha256>
 
 The signature is computed as: `HMAC-SHA256(secret, "msg_id.timestamp.body")`
 
+## 🚀 Live Demo
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit-blue?style=for-the-badge)](https://webhook-sender-demo.vercel.app)
+
+[See the demo in action →](https://webhook-sender-demo.vercel.app)
+
 ## License
 
 MIT
+
+---
+
+<div align="center">
+Built with ❤️ for Convex | <a href="https://www.convex.dev/">Convex</a> • <a href="https://docs.convex.dev/components">Components</a> • <a href="https://github.com/get-convex">GitHub</a>
+</div>
