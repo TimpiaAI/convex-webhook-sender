@@ -1,5 +1,7 @@
 # convex-webhook-sender
 
+[![Convex Component](https://www.convex.dev/components/badge/convex-webhook-sender)](https://www.convex.dev/components/convex-webhook-sender)
+
 A Convex component for managed outbound webhook delivery with HMAC signing, retries, exponential backoff, and delivery tracking.
 
 ## Features
