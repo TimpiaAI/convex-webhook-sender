@@ -158,6 +158,8 @@ The signature is computed as: `HMAC-SHA256(secret, "msg_id.timestamp.body")`
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Visit-blue?style=for-the-badge)](https://webhook-sender-demo.vercel.app)
 
+[![Webhook Sender Demo](./screenshot.png)](https://webhook-sender-demo.vercel.app)
+
 [See the demo in action →](https://webhook-sender-demo.vercel.app)
 
 ## License
